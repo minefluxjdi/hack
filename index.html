@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacking Site</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+        .attack-button {
+            background-color: lime;
+            color: black;
+            padding: 20px 40px;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .attack-button:hover {
+            background-color: green;
+        }
+        .console {
+            background-color: black;
+            border: 2px solid lime;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            height: 200px;
+            overflow-y: scroll;
+            margin: 20px auto;
+        }
+        .command {
+            color: lime;
+            margin: 5px 0;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            background-color: black;
+            color: lime;
+            border-bottom: 1px solid lime;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Hacking Console</h1>
+    <p>Type 'activate' to start the attack:</p>
+    <input type="text" id="userInput" placeholder="Enter command here...">
+    <button class="attack-button" onclick="executeCommand()">Attack Now</button>
+
+    <div class="console" id="console">
+        <div class="command">System: Ready...</div>
+    </div>
+
+    <script>
+        function executeCommand() {
+            const input = document.getElementById('userInput').value.toLowerCase();
+            const consoleDiv = document.getElementById('console');
+            consoleDiv.innerHTML += `<div class="command">> ${input}</div>`;
+            
+            if (input === 'activate') {
+                consoleDiv.innerHTML += `<div class="command">Attack started, boss!</div>`;
+            } else {
+                consoleDiv.innerHTML += `<div class="command">Command not recognized.</div>`;
+            }
+
+            document.getElementById('userInput').value = '';
+        }
+    </script>
+</body>
+</html>
